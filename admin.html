@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Sentiment AI - Admin Access</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax-js/3.1.0/parallax.min.js"></script>
+</head>
+<body class="admin-page">
+    <div class="parallax-background" id="scene">
+        <div data-depth="0.2" class="parallax-layer layer-1"></div>
+        <div data-depth="0.4" class="parallax-layer layer-2"></div>
+        <div data-depth="0.6" class="parallax-layer layer-3"></div>
+    </div>
+    
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Stock Sentiment AI</h1>
+            <p class="hero-subtitle">Advanced Analytics Platform</p>
+            <div class="hero-decoration">
+                <div class="hero-line"></div>
+                <div class="hero-dot"></div>
+                <div class="hero-line"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="admin-container">
+        <div class="admin-content">
+            <div class="back-button" id="back-to-dashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5"></path>
+                    <path d="M12 19l-7-7 7-7"></path>
+                </svg>
+                <span>Back to Dashboard</span>
+            </div>
+            
+            <div class="admin-header">
+                <div class="admin-logo">
+                    <div class="zipper-icon">
+                        <div class="zipper-pull"></div>
+                        <div class="zipper-teeth"></div>
+                    </div>
+                </div>
+                <h1>Stock Sentiment AI</h1>
+                <h2>Admin Access Required</h2>
+            </div>
+            
+            <div class="project-info">
+                <h3>About This Project</h3>
+                <p>The Stock Market Sentiment AI Dashboard is an advanced analytics platform that uses artificial intelligence to analyze news articles and social media content related to the Indian stock market. It provides real-time sentiment analysis, trend predictions, and market insights.</p>
+                
+                <div class="developer-info">
+                    <h4>Developer: Tushar R Chandane</h4>
+                    <p>More projects and advanced trading automated models available at: <a href="https://vercel.com/tushar-chandanes-projects/universe-9446" target="_blank">Tushar's Project Portfolio</a></p>
+                    <p>Check out my <a href="https://github.com/tusharchandane" target="_blank">GitHub</a> for more open-source projects.</p>
+                </div>
+                
+                <h3>How It Helps Traders</h3>
+                <p>This sentiment analysis dashboard provides traders with critical insights that can significantly improve trading decisions and strategy development. By analyzing market sentiment in real-time, traders can identify potential market movements before they occur and adjust their strategies accordingly:</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>Real-time Sentiment Analysis</h4>
+                        <p>Analyzes thousands of news articles and social media posts to determine market sentiment, helping traders gauge market psychology before making decisions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Predictive Analytics</h4>
+                        <p>Uses machine learning algorithms to predict market movements based on sentiment trends, giving traders an edge in anticipating price movements.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Source Tracking</h4>
+                        <p>Monitors and analyzes content from over 50 financial news sources and social platforms, allowing traders to identify which sources impact market sentiment most.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Market-Aware System</h4>
+                        <p>Automatically adjusts analysis based on market hours, weekends, and holidays, ensuring traders always have context-appropriate insights.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Risk Management</h4>
+                        <p>Helps traders identify potential market volatility based on sentiment shifts, allowing for better position sizing and stop-loss placement.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Sector-Specific Insights</h4>
+                        <p>Provides sentiment breakdown by market sectors, helping traders identify opportunities in specific industries experiencing sentiment shifts.</p>
+                    </div>
+                </div>
+                
+                <div class="admin-access">
+                    <h3>Get Full Access</h3>
+                    <p>The admin version provides access to:</p>
+                    <ul>
+                        <li>Advanced sentiment configuration</li>
+                        <li>Custom alert settings</li>
+                        <li>Historical data analysis</li>
+                        <li>API integration options</li>
+                        <li>Custom reporting tools</li>
+                    </ul>
+                    
+                    <div class="contact-developer">
+                        <h4>Contact Developer</h4>
+                        <p>To request access to the full version of this project, please contact the developer:</p>
+                        <div class="contact-form">
+                            <form id="access-request-form">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company">Company</label>
+                                    <input type="text" id="company" name="company">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn--primary">Request Access</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

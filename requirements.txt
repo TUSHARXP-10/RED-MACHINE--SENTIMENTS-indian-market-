@@ -1,0 +1,6 @@
+python-dotenv
+supabase
+feedparser
+beautifulsoup4
+requests
+python-dateutil

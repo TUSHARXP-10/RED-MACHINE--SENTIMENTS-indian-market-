@@ -1,0 +1,29 @@
+{
+  "name": "stock-sentiment-ai-dashboard",
+  "version": "1.0.0",
+  "description": "Real-time stock market sentiment analysis dashboard for Indian markets",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000 -o",
+    "dev": "npx http-server -p 3000 -o -c-1",
+    "build": "echo 'No build step required for static site'",
+    "serve": "npx http-server -p 8080"
+  },
+  "keywords": [
+    "stock-market",
+    "sentiment-analysis",
+    "indian-markets",
+    "dashboard",
+    "real-time"
+  ],
+  "author": "Stock Sentiment AI",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

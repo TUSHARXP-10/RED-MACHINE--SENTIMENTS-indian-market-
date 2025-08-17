@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Sentiment AI Dashboard - India</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="config.js?v=1"></script>
+    <script src="market-status.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="admin-zip-button" id="admin-zip-button">
+                    <div class="zipper">
+                        <div class="zipper-pull"></div>
+                        <div class="zipper-teeth"></div>
+                    </div>
+                    <span class="zip-text">Admin</span>
+                </div>
+                <h1 class="header__title">Stock Market Sentiment AI Dashboard - India</h1>
+                <div class="header__info">
+                    <div class="header__datetime">
+                        <span id="current-date"></span>
+                        <span id="current-time"></span>
+                    </div>
+                    <div class="market-status-display" id="market-status-display">
+                        <div class="market-status-badge loading">
+                            📊 Loading Market Status...
+                        </div>
+                    </div>
+                    <div class="header__status">
+                        <span class="status-indicator">
+                            <span class="status-dot" id="status-dot"></span>
+                            <span id="last-updated">Last updated: Loading...</span>
+                        </span>
+                        <div class="auto-refresh-indicator" id="auto-refresh-indicator">
+                            <span class="refresh-icon">↻</span>
+                            Auto-refresh ON
+                        </div>
+                        <div class="data-context-label" id="data-context-label">
+                            Real-time
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Control Panel Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <h3>Controls</h3>
+            <button class="sidebar__toggle" id="sidebar-toggle">×</button>
+        </div>
+        <div class="sidebar__content">
+            <div class="control-group">
+                <button class="btn btn--primary btn--full-width" id="manual-refresh">
+                    <span class="refresh-icon">↻</span>
+                    Manual Refresh
+                </button>
+            </div>
+            <div class="control-group">
+                <label class="form-label">Auto-refresh</label>
+                <label class="toggle">
+                    <input type="checkbox" id="auto-refresh-toggle" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="control-group">
+                <label class="form-label">Refresh Interval</label>
+                <select class="form-control" id="refresh-interval">
+                    <option value="5000">5 seconds</option>
+                    <option value="15000">15 seconds</option>
+                    <option value="60000">1 minute</option>
+                    <option value="300000">5 minutes</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <button class="btn btn--secondary btn--full-width" id="export-data">
+                    Export Data
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Key Metrics Cards -->
+            <section class="metrics-grid">
+                <div class="metric-card metric-card--primary">
+                    <div class="metric-card__header">
+                        <h3>Overall Sentiment</h3>
+                    </div>
+                    <div class="metric-card__content">
+                        <div class="sentiment-gauge">
+                            <canvas id="sentiment-gauge" width="120" height="120"></canvas>
+                            <div class="gauge-value" id="sentiment-value">+12.5</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-card__header">
+                        <h3>Articles Today</h3>
+                    </div>
+                    <div class="metric-card__content">
+                        <div class="metric-value" id="articles-count">347</div>
+                        <div class="metric-change">+23 from yesterday</div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-card__header">
+                        <h3>Bullish</h3>
+                    </div>
+                    <div class="metric-card__content">
+                        <div class="metric-value metric-value--positive" id="bullish-percentage">42%</div>
+                        <div class="metric-change">+2% from yesterday</div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-card__header">
+                        <h3>Bearish</h3>
+                    </div>
+                    <div class="metric-card__content">
+                        <div class="metric-value metric-value--negative" id="bearish-percentage">31%</div>
+                        <div class="metric-change">-1% from yesterday</div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-card__header">
+                        <h3>Prediction</h3>
+                    </div>
+                    <div class="metric-card__content">
+                        <div class="prediction-display">
+                            <span class="prediction-direction" id="prediction-direction">UP</span>
+                            <div class="prediction-confidence" id="prediction-confidence">73%</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Dashboard Grid -->
+            <section class="dashboard-grid">
+                <!-- Left Column - Sentiment Feed -->
+                <div class="dashboard-panel">
+                    <div class="panel-header">
+                        <h3>Live Sentiment Feed</h3>
+                        <span class="panel-badge" id="feed-count">5 items</span>
+                    </div>
+                    <div class="sentiment-feed" id="sentiment-feed">
+                        <!-- Dynamic content will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Center Column - Charts -->
+                <div class="dashboard-panel dashboard-panel--center">
+                    <div class="chart-section">
+                        <div class="panel-header">
+                            <h3>Sentiment Trend (24h)</h3>
+                        </div>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="sentiment-trend-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-section">
+                        <div class="panel-header">
+                            <h3>Market Prediction</h3>
+                        </div>
+                        <div class="prediction-gauge">
+                            <canvas id="prediction-gauge" width="200" height="120"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Distribution & Sources -->
+                <div class="dashboard-panel">
+                    <div class="chart-section">
+                        <div class="panel-header">
+                            <h3>Sentiment Distribution</h3>
+                        </div>
+                        <div class="chart-container" style="position: relative; height: 250px;">
+                            <canvas id="sentiment-pie-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="sources-section">
+                        <div class="panel-header">
+                            <h3>Top Sources</h3>
+                        </div>
+                        <div class="sources-list" id="sources-list">
+                            <!-- Dynamic content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Analysis Table -->
+            <section class="analysis-section">
+                <div class="panel-header">
+                    <h3>Recent Analysis</h3>
+                    <div class="table-filters">
+                        <select class="form-control form-control--sm" id="sentiment-filter">
+                            <option value="all">All Sentiments</option>
+                            <option value="positive">Positive</option>
+                            <option value="negative">Negative</option>
+                            <option value="neutral">Neutral</option>
+                        </select>
+                        <select class="form-control form-control--sm" id="source-filter">
+                            <option value="all">All Sources</option>
+                            <option value="MoneyControl">MoneyControl</option>
+                            <option value="Economic Times">Economic Times</option>
+                            <option value="Business Standard">Business Standard</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="analysis-table-container">
+                    <table class="analysis-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Headline</th>
+                                <th>Source</th>
+                                <th>Sentiment</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="analysis-table-body">
+                            <!-- Dynamic content will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading market data...</div>
+    </div>
+
+    <!-- Toggle Sidebar Button -->
+    <button class="sidebar-trigger" id="sidebar-trigger">⚙</button>
+
+    <script src="app.js"></script>
+</body>
+</html>
