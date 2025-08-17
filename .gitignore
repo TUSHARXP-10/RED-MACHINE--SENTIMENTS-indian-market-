@@ -5,6 +5,12 @@
 .env.test.local
 .env.production.local
 
+# API Configuration with credentials
+config.js
+config.json
+secrets.js
+secrets.json
+
 # Python
 __pycache__/
 *.py[cod]
